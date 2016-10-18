@@ -3,11 +3,12 @@ direction_hash = Hash.new
 direction_hash["X"] = 0
 direction_hash["Y"] = 0
 
-puts "Enter instruction in format 'DIRECTION STEPS' e.g 'DOWN 3' and press enter"
-puts "Type 'q' when complete"
+puts "Enter instructions in format 'DIRECTION STEPS' e.g 'DOWN 3' seperated by a comma then press enter"
 movement = gets.chomp
-while movement != "q"
-  direction = movement.split(" ")
+movement_array = movement.split(",")
+
+movement_array.each {|element|
+  direction = element.split(" ")
 
   if direction[0].upcase == "UP"
     direction_hash["Y"] += direction[1].to_i
@@ -22,12 +23,11 @@ while movement != "q"
     direction_hash["X"] += direction[1].to_i
 
   else
-    puts "Incorrect input"
+    puts "#{element} is an Incorrect input"
 
   end
 
-  movement = gets.chomp
-end
+}
 
 direction_hash.each { |key,value|
   puts "#{key} : #{value}"
