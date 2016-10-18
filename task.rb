@@ -29,6 +29,13 @@ while movement != "q"
   movement = gets.chomp
 end
 
+direction_hash.each { |key,value|
+  puts "#{key} : #{value}"
+}
 puts "calculating distance"
 
-# put in loop
+sum_of_squares = direction_hash["Y"]**2 + direction_hash["X"]**2
+
+distance = Math.sqrt(sum_of_squares).to_i
+
+puts "distance is #{distance}"
